@@ -96,7 +96,70 @@
         this.fact = fact
         }
 
+        getHecho(human) {
+            const hecho = this.species === 'Pigeon' ? 0 : Math.round(Math.random() * 5);
+            if (hecho == 1) return this.getWeight(human.weight)
+            if (hecho == 2) return this.getHeight(human.height)
+            if (hecho == 3) return this.getDiet(human.diet)
+            if (hecho == 4) return `The dino was from ${this.where}`
+            if (hecho == 5) return `The dino was in ${this.when}`
+            return this.fact
+        }
+        
+        getWeight(weightHuman) {
+            if (weightHuman == this.weight) return `The weight of the dino is equal to human`
+            return (weightHuman > this.weight)
+            ? `The weight of the dino is smaller than the human`
+            : `The weight of the dino is greater than the human`
+        }
+        
+        getHeight(heightHuman) {
+            if (heightHuman == this.height) return `The height of the dino is equal to human`
+            return (heightHuman > this.height)
+            ? `The height of the dino is smaller than the human`
+            : `The height of the dino is greater than the human`
+        }
+        
+        getDiet(dietHuman) {
+            return dietHuman == this.diet 
+            ? `The diet of the dino is equal to human`
+            : `The diet of the dino is different to human`
+        }
+        }
+        
+        const human = {
+        name: 'melisa',
+        height: 98,
+        weight: 78,
+        diet: 'carnivor'
+        }
+        
+        const getHtmlHuman = (name) => (`
+        <div class="grid-item">
+            <h3>${name}</h3>
+            <img src="images/human.png">
+            <p></p>
+        </div>
+        `)
+        
+        const getHtmlDino = (dino, human) => (`
+        <div class="grid-item">
+            <h3>${dino.species}</h3>
+            <img src="images/${dino.image}">
+            <p>${dino.getHecho(human)}</p>
+        </div>
+        `)
 
+        const dinos = getDinos().map(dino => getHtmlDino(new Dino(dino), human))
+        dinos.splice(4, 0, getHtmlHuman(human.name))
+        
+        // document.getElementById('grid').appendChild(fragment);
+        document.querySelector('#grid').innerHTML = dinos
+
+
+    function obtenerDatos(){
+        let name =document.getElementById('name').value;
+    }
 
 
     // Create Human Object
