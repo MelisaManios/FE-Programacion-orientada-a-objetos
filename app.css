@@ -173,3 +173,11 @@ select {
     display: block;
     font-size: 0.7em;
 }
+
+#grid-dinos {
+    display: none;
+}
+
+#imperial-form {
+    display: none;
+}
